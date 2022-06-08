@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스크롤시 헤더스타일변경</title>
+    <style>
+        * {margin: 0; padding: 0;}
+        li {list-style: none;}
+        a {text-decoration: none; color: #333;}
+        
+        body {
+            color: #333;
+        }
+
+        header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 9;
+            
+        }
+        header .top_menu {
+            width: 1280px;
+            margin: 0 auto;
+            height: 40px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            font-size: 14px;
+        }
+        header .top_menu li a {
+            padding: 0 10px;
+            color: #fff;
+        }
+        header nav ul {
+            height: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.308);
+        }
+        header nav ul li a {
+            padding: 0 40px;
+            font-size: 18px;
+            color: #fff;
+            font-weight: bold;
+
+        }
+
+        header.scroll {
+            position: fixed;
+            background-color: #fff;
+        }
+        header.scroll a {
+            color: #333;
+        }
+        header.scroll .top_menu {
+            display: none;
+        }
+        .main_visual {
+            height: 100vh;
+            position: relative;
+        }
+        .main_visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .main_visual p {
+            width: 100%;
+            padding: 0 200px;
+            box-sizing: border-box;
+            position: absolute; 
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            text-align: center;
+            color: #fff; 
+             
+            
+        }
+        .cont01 {
+            height: 100vh;
+            background-color: #333;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+    <script>
+        window.onload = function(){
+            let header = document.querySelector('header');
+            let headerTop = document.querySelector('.top_menu');
+
+            let headerHeight = header.offsetHeight; 
+            let headerTopHeight = headerTop.offsetHeight; 
+
+            window.onscroll = function(){
+                let windowTop = window.scrollY;
+                if(windowTop >= headerTopHeight) {
+                    header.classList.add("scroll");
+                } else {
+                    header.classList.remove("scroll");
+                }
+            }
+
+        }//script end
+    </script>
+</head>
+<body>
+    <!-- https://tiary.tistory.com/entry/Vanilla-JS-%EC%8A%A4%ED%81%AC%EB%A1%A4%EB%82%B4%EB%A6%AC%EB%A9%B4-%ED%97%A4%EB%8D%94-%EA%B3%A0%EC%A0%95-header-fixed-on-scroll -->
+
+    <!-- https://w3techs.com/technologies/history_overview/javascript_library/all/y -->
+    <header>
+        <div>
+            <ul class="top_menu">
+                <li><a href="#">로그인</a></li>
+                <li><a href="#">회원가입</a></li>
+                <li><a href="#">검색</a></li>
+            </ul>
+            <nav>
+                <ul>
+                    <li><a href="#">menu1</a></li>
+                    <li><a href="#">menu2</a></li>
+                    <li><a href="#">menu3</a></li>
+                    <li><a href="#">menu4</a></li>
+                    <li><a href="#">menu5</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <section class="main_visual">
+        <img src="images/음식3.jpg" alt="" />
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti est unde iure repudiandae rem? Architecto voluptate odit esse delectus itaque accusantium voluptatum laboriosam neque laborum! Vel quibusdam beatae corporis temporibus.</p>
+    </section><!-- .main_visual end -->
+    <section class="cont01">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum ad iure pariatur autem ab. Ab saepe doloribus incidunt eaque? Excepturi veniam itaque voluptatem dolorum similique, assumenda fuga fugiat quibusdam velit?</p>
+    </section><!-- .cont01 end -->
+</body>
+</html>
